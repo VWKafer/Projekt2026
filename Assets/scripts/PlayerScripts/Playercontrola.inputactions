@@ -143,7 +143,7 @@
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keybord",
+                    "groups": "",
                     "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": false

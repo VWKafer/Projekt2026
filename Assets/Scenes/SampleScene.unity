@@ -434,9 +434,12 @@ MonoBehaviour:
   rb: {fileID: 430332239}
   moveSpeed: 5
   jumpheight: 5
+  deltaMousX: 0
+  deltaMousY: 0
   moussensetivity: 5
   Move: {fileID: -705263503456058496, guid: 058c2b4c66843f948b4a368cbbe04334, type: 3}
-  Turn: {fileID: -7574143729212041790, guid: 058c2b4c66843f948b4a368cbbe04334, type: 3}
+  movex: {fileID: 0}
+  movey: {fileID: 0}
   Cameratrans: {fileID: 473578273}
 --- !u!54 &430332239
 Rigidbody:
@@ -478,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
   m_Actions: {fileID: -944628639613478452, guid: 058c2b4c66843f948b4a368cbbe04334, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -488,8 +491,48 @@ MonoBehaviour:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1963789969219374114, guid: 058c2b4c66843f948b4a368cbbe04334, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.InputActionReference, Unity.InputSystem
+        m_MethodName: set_name
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnMouseX
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2572821215598371892, guid: 058c2b4c66843f948b4a368cbbe04334, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.InputActionReference, Unity.InputSystem
+        m_MethodName: set_name
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_ActionEvents:
+  - m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+    m_ActionId: 80907941-0831-4e4c-b9a2-6031b121a983
+    m_ActionName: 'defaultmovment/Move[/Keyboard/space,/Keyboard/shift,/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 58658085-a33e-4305-9bd8-a1dd889a95aa
+    m_ActionName: 'defaultmovment/interact[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ce5d1d36-2d4a-41e1-b220-62ab06ab9156
+    m_ActionName: 'defaultmovment/mousX[/Mouse/delta/x]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: df295a1c-37fa-4410-83f2-8256dea5395c
+    m_ActionName: 'defaultmovment/mousy[/Mouse/delta/y]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: defaultmovment

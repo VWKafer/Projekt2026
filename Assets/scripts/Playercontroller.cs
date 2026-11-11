@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Playercontroller : MonoBehaviour
 {
 
     [SerializeField] private float WalkSpeed = 5.5f;
@@ -12,10 +12,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     [SerializeField] private float LookSensitivity = 0.2f;
     [SerializeField] private float LookAngleLimit = 90f;
+  
+    public bool canMove = true;
 
     private Camera mainCamera;
     private CharacterController characterController;
-
+  
     private InputAction moveInput;
     private InputAction runInput;
     private InputAction jumpInput;
@@ -45,19 +47,25 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Vector2 moveVector = moveInput.ReadValue<Vector2>();
 
-        Vector2 mousVector = moveInput.ReadValue<Vector2>();
-        Vector2 mouseDelta = new Vector2(Mouse.current.delta.x.ReadValue(), Mouse.current.delta.y.ReadValue());
 
-        if(!characterController.isGrounded)
-            jumped = false;
+
+
+        if (canMove== true)
+        {
+            Vector2 moveVector = moveInput.ReadValue<Vector2>();
+
+            Vector2 mousVector = moveInput.ReadValue<Vector2>();
+            Vector2 mouseDelta = new Vector2(Mouse.current.delta.x.ReadValue(), Mouse.current.delta.y.ReadValue());
+
+            if(!characterController.isGrounded)
+                jumped = false;
         
         
-        curentMoveSpeed = runInput.IsPressed() ? RunningSpeed : WalkSpeed;
-        HandleMovment(moveVector);
-        HandleLooking(mouseDelta);
-        
+            curentMoveSpeed = runInput.IsPressed() ? RunningSpeed : WalkSpeed;
+            HandleMovment(moveVector);
+            HandleLooking(mouseDelta);
+        }
     }
     private void HandleMovment(Vector2 moveVector)
     {
@@ -93,5 +101,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         mainCamera.transform.localRotation = Quaternion.Euler(lookAngle, 0, 0);
         transform.rotation *= Quaternion.Euler(0, mouseDelta.x * LookSensitivity, 0);
+    }
+    public void SetCanMove(bool canMove)
+    {
+        this.canMove = canMove;
     }
 }

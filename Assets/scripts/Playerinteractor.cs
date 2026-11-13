@@ -43,24 +43,35 @@ public class Playerinteractor : MonoBehaviour
 
             if (!Physics.Raycast(ray, out RaycastHit hitInfo, interactionDistance)) return;
 
-            if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactable0bject)){
-                interactable0bject.Interact();
+            if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactableObject)){ // Check if the object has an IInteractable component
+                interactableObject.Interact();
                 
-                if (isInteracting == true){
-                    playerController.SetCanMove(true);
-                    isInteracting = false;
-                    Text.GetComponent<TextController>().setText("move");
-                }else
-                {
-                    playerController.SetCanMove(false);
-                    isInteracting = true;
-                    Text.GetComponent<TextController>().setText("read");
-                }
-            }
-               
+                if (hitInfo.collider.gameObject.TryGetComponent(out  readableinteractable readableObject)){
+                    
+                    if (isInteracting == true){
+                        playerController.SetCanMove(true);
+                        isInteracting = false;
+                        Text.GetComponent<TextController>().setText("move");
+                    }else{
+                        playerController.SetCanMove(false);
+                        isInteracting = true;
+                        Text.GetComponent<TextController>().setText(readableObject.GetText());
+                    } 
+                }else{ 
+                    Debug.Log("No text controller found");
 
-              
-            
+                    if (isInteracting == true){
+                        playerController.SetCanMove(true);
+                        isInteracting = false;
+                        Text.GetComponent<TextController>().setText("move");
+                    }else{
+                        playerController.SetCanMove(false);
+                        isInteracting = true;
+                        Text.GetComponent<TextController>().setText("read");
+                    } 
+                }
+
+            }  
         }
     }
 }

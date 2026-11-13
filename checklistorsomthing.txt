@@ -1,0 +1,3 @@
+checklist:
+
+-funktion zum importiern von texten in lesbare objekte
